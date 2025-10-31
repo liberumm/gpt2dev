@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>シンプルなサンプルHTML</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+        line-height: 1.7;
+        background-color: #f3f4f6;
+        color: #1f2937;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      header {
+        background: radial-gradient(circle at top left, #60a5fa, #2563eb 55%, #1e3a8a);
+        color: #ffffff;
+        padding: clamp(3rem, 7vw, 5.5rem) 1.5rem 3rem;
+        text-align: center;
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: clamp(2.3rem, 6vw, 3.6rem);
+        letter-spacing: 0.05em;
+      }
+
+      header p {
+        margin: 1rem auto 2rem;
+        max-width: 48rem;
+        font-size: clamp(1.05rem, 2.6vw, 1.2rem);
+      }
+
+      nav {
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        justify-content: center;
+      }
+
+      nav a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.65rem 1.4rem;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        color: inherit;
+        background-color: rgba(15, 23, 42, 0.18);
+        text-decoration: none;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        transition: transform 0.2s ease, background-color 0.2s ease;
+      }
+
+      nav a:hover,
+      nav a:focus {
+        transform: translateY(-2px);
+        background-color: rgba(15, 23, 42, 0.28);
+      }
+
+      main {
+        padding: clamp(2.5rem, 6vw, 4rem) 1.5rem 4rem;
+        margin: 0 auto;
+        max-width: 960px;
+        display: grid;
+        gap: 2.5rem;
+      }
+
+      section,
+      aside {
+        background-color: #ffffff;
+        border-radius: 20px;
+        padding: clamp(1.8rem, 4vw, 2.6rem);
+        box-shadow: 0 18px 36px rgba(15, 23, 42, 0.08);
+      }
+
+      h2 {
+        margin-top: 0;
+        font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+        color: #1d4ed8;
+        letter-spacing: 0.02em;
+      }
+
+      p {
+        margin-top: 0.75rem;
+        margin-bottom: 1rem;
+      }
+
+      .tips {
+        border-left: 4px solid #facc15;
+        background-color: rgba(250, 204, 21, 0.16);
+        padding: 1.1rem 1.5rem;
+        border-radius: 16px;
+        color: #92400e;
+        font-weight: 600;
+        margin-top: 1.5rem;
+      }
+
+      .feature-grid {
+        display: grid;
+        gap: 1.25rem;
+        margin-top: 1.5rem;
+      }
+
+      .feature-card {
+        background: linear-gradient(160deg, rgba(59, 130, 246, 0.12), rgba(139, 92, 246, 0.12));
+        border: 1px solid rgba(37, 99, 235, 0.15);
+        border-radius: 18px;
+        padding: 1.5rem;
+        display: grid;
+        gap: 0.55rem;
+      }
+
+      .feature-card strong {
+        font-size: 1.05rem;
+      }
+
+      .example-layout {
+        display: grid;
+        gap: 1.5rem;
+      }
+
+      .example-layout article {
+        border: 1px solid rgba(15, 23, 42, 0.08);
+        border-radius: 18px;
+        padding: 1.5rem;
+        background-color: #f8fafc;
+        box-shadow: none;
+      }
+
+      .example-layout h3 {
+        margin-top: 0;
+        font-size: 1.2rem;
+        color: #0f172a;
+      }
+
+      .example-layout ul {
+        margin: 0;
+        padding-left: 1.2rem;
+      }
+
+      .example-layout li + li {
+        margin-top: 0.4rem;
+      }
+
+      .dataset table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1.5rem;
+        font-size: 0.95rem;
+      }
+
+      .dataset th,
+      .dataset td {
+        padding: 0.85rem 1rem;
+        border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+        text-align: left;
+      }
+
+      .dataset thead th {
+        background-color: #1d4ed8;
+        color: #ffffff;
+      }
+
+      .dataset tbody tr:nth-of-type(odd) {
+        background-color: rgba(59, 130, 246, 0.08);
+      }
+
+      form {
+        display: grid;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      label {
+        font-weight: 600;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      input,
+      textarea,
+      select {
+        border: 1px solid rgba(148, 163, 184, 0.9);
+        border-radius: 12px;
+        padding: 0.75rem 1rem;
+        font: inherit;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      input:focus,
+      textarea:focus,
+      select:focus {
+        outline: none;
+        border-color: #2563eb;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+      }
+
+      button {
+        border: none;
+        border-radius: 12px;
+        padding: 0.8rem 1.4rem;
+        font-weight: 600;
+        background-color: #2563eb;
+        color: #ffffff;
+        cursor: pointer;
+        transition: transform 0.2s ease, background-color 0.2s ease;
+      }
+
+      button:hover,
+      button:focus {
+        transform: translateY(-1px);
+        background-color: #1d4ed8;
+      }
+
+      footer {
+        padding: 3rem 1.5rem 4rem;
+        text-align: center;
+        color: #475569;
+        font-size: 0.9rem;
+      }
+
+      @media (min-width: 720px) {
+        .feature-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .example-layout {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>シンプルなサンプルHTML</h1>
+      <p>
+        セマンティックなタグとモダンなCSSの基本が一望できるテンプレートです。小規模サイトやプロトタイピング、勉強用の雛形としてそのままご利用いただけます。
+      </p>
+      <nav aria-label="ページ内ナビゲーション">
+        <a href="#semantic">構造のポイント</a>
+        <a href="#layout">レイアウト例</a>
+        <a href="#dataset">テーブル</a>
+        <a href="#contact">フォーム</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="semantic" aria-labelledby="semantic-title">
+        <h2 id="semantic-title">セマンティックな構造のポイント</h2>
+        <p>
+          HTML5では文書の構造を明確にするために<code>&lt;header&gt;</code>、<code>&lt;main&gt;</code>、<code>&lt;section&gt;</code>などのタグが用意されています。検索エンジンや支援技術にとって理解しやすいページ作りを意識しましょう。
+        </p>
+        <div class="feature-grid" role="list">
+          <div class="feature-card" role="listitem">
+            <strong>ヘッダー</strong>
+            <span>サイト全体の導入として見出しやナビゲーションを配置します。</span>
+          </div>
+          <div class="feature-card" role="listitem">
+            <strong>メインコンテンツ</strong>
+            <span>訪問者が最も知りたい情報を<code>&lt;main&gt;</code>内にまとめます。</span>
+          </div>
+          <div class="feature-card" role="listitem">
+            <strong>補足情報</strong>
+            <span><code>&lt;aside&gt;</code>や<code>&lt;footer&gt;</code>を使って補足や著作権表記を記載します。</span>
+          </div>
+        </div>
+        <p class="tips">Tip: セクションには<code>id</code>を付与し、ナビゲーションと関連づけるとページ内移動がスムーズになります。</p>
+      </section>
+
+      <section id="layout" aria-labelledby="layout-title">
+        <h2 id="layout-title">レイアウト例</h2>
+        <p>コンテンツのまとまりごとにカードを用意し、利用例やチェックポイントを記載しています。</p>
+        <div class="example-layout">
+          <article>
+            <h3>情報カード</h3>
+            <p>テキスト中心の情報をまとめる場合は見出しとリストを組み合わせるだけで十分です。</p>
+            <ul>
+              <li>重要なキーワードは<code>&lt;strong&gt;</code>で強調</li>
+              <li>補足説明は<code>&lt;small&gt;</code>や段落で表現</li>
+              <li>カード同士は均等な余白で揃える</li>
+            </ul>
+          </article>
+          <article>
+            <h3>メディアカード</h3>
+            <p>画像や動画などのメディアを含める場合は、<code>&lt;figure&gt;</code>と<code>&lt;figcaption&gt;</code>を併用すると説明が伝わりやすくなります。</p>
+            <ul>
+              <li>画像には<code>alt</code>属性で代替テキストを設定</li>
+              <li>動画には字幕や再生コントロールを提供</li>
+              <li>視認性の高い配色とフォントサイズを確保</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="dataset" class="dataset" aria-labelledby="dataset-title">
+        <h2 id="dataset-title">テーブルサンプル</h2>
+        <p>複数のデータを比較する場合はテーブルが効果的です。見出しセルには<code>scope</code>属性を指定しましょう。</p>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">項目</th>
+              <th scope="col">概要</th>
+              <th scope="col">活用ポイント</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>アクセシビリティ</td>
+              <td>誰もが利用できるウェブ体験を意識した設計や実装。</td>
+              <td>コントラスト比やキーボード操作、代替テキストの整備が重要。</td>
+            </tr>
+            <tr>
+              <td>レスポンシブデザイン</td>
+              <td>画面サイズに応じたレイアウト調整。</td>
+              <td>メディアクエリや柔軟なグリッドで可読性を保つ。</td>
+            </tr>
+            <tr>
+              <td>パフォーマンス</td>
+              <td>高速な読み込みとスムーズな操作感のための最適化。</td>
+              <td>画像の遅延読み込みや不要なスクリプトの削減が効果的。</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="contact" aria-labelledby="contact-title">
+        <h2 id="contact-title">簡易フォーム例</h2>
+        <p>フォームはユーザーとやりとりを行うための重要なインターフェースです。ラベルと入力欄を関連付けて使いやすくしましょう。</p>
+        <form>
+          <label for="name">
+            お名前
+            <input id="name" name="name" type="text" autocomplete="name" placeholder="山田 太郎" required />
+          </label>
+          <label for="email">
+            メールアドレス
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="taro@example.com" required />
+          </label>
+          <label for="type">
+            お問い合わせ種別
+            <select id="type" name="type">
+              <option value="">選択してください</option>
+              <option value="question">ご質問</option>
+              <option value="request">制作依頼</option>
+              <option value="feedback">ご意見・ご感想</option>
+            </select>
+          </label>
+          <label for="message">
+            メッセージ
+            <textarea id="message" name="message" rows="4" placeholder="ご用件を入力してください"></textarea>
+          </label>
+          <button type="submit">送信する</button>
+        </form>
+        <aside class="tips" aria-label="フォーム入力のヒント">
+          <strong>入力チェックの例:</strong> <span>JavaScriptで必須項目の検証やリアルタイムでのエラー表示を行うと使い勝手が向上します。</span>
+        </aside>
+      </section>
+    </main>
+
+    <footer>&copy; 2024 Sample HTML Template. All rights reserved.</footer>
+  </body>
+</html>
